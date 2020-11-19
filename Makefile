@@ -122,7 +122,7 @@ cache/%/kubectl-$(KUBECTL_VERSION): docker/kubectl.version
 # FIXME OS and architecture in download URL
 cache/%/kustomize-$(KUSTOMIZE_VERSION): docker/kustomize.version
 	mkdir -p cache/$*
-	curl --fail -L -o cache/$*/kustomize-$(KUSTOMIZE_VERSION).tar.gz "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$(KUSTOMIZE_VERSION)/kustomize_v$(KUSTOMIZE_VERSION)_linux_$(CURRENT_OS).tar.gz"
+	curl --fail -L -o cache/$*/kustomize-$(KUSTOMIZE_VERSION).tar.gz "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$(KUSTOMIZE_VERSION)/kustomize_v$(KUSTOMIZE_VERSION)_linux_$*.tar.gz"
 	echo "$(KUSTOMIZE_CHECKSUM)  cache/$*/kustomize-$(KUSTOMIZE_VERSION).tar.gz" | shasum -a 256 -c
 	tar -m -C ./cache -xzf cache/$*/kustomize-$(KUSTOMIZE_VERSION).tar.gz kustomize
 	mv cache/kustomize $@
