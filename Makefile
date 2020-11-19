@@ -123,7 +123,7 @@ cache/%/kubectl-$(KUBECTL_VERSION): docker/kubectl.version
 cache/%/kustomize-$(KUSTOMIZE_VERSION): docker/kustomize.version
 	mkdir -p cache/$*
 	curl --fail -L -o cache/$*/kustomize-$(KUSTOMIZE_VERSION).tar.gz "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$(KUSTOMIZE_VERSION)/kustomize_v$(KUSTOMIZE_VERSION)_linux_$(ARCH).tar.gz"
-	echo "$(KUSTOMIZE_CHECKSUM)  cache/$*/kustomize-$(KUSTOMIZE_VERSION).tar.gz" | shasum -a 256 -c
+	echo "$(KUSTOMIZE_CHECKSUM_$(ARCH))  cache/$*/kustomize-$(KUSTOMIZE_VERSION).tar.gz" | shasum -a 256 -c
 	tar -m -C ./cache -xzf cache/$*/kustomize-$(KUSTOMIZE_VERSION).tar.gz kustomize
 	mv cache/kustomize $@
 
